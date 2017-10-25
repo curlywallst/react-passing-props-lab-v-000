@@ -14,15 +14,19 @@ class App extends React.Component {
 
   componentWillMount() {
     this.fetchFilters();
-    fetch('/api/fruit')
-      .then(response => response.json())
-      .then(fruit => this.setState({ fruit }));
+    this.fetchFruit();
   }
 
   fetchFilters = () => {
     fetch('/api/fruit_types')
       .then(response => response.json())
       .then(filters => this.setState({ filters }));
+  }
+
+  fetchFruit = () => {
+    fetch('/api/fruit')
+      .then(response => response.json())
+      .then(fruit => this.setState({ fruit }));
   }
 
   updateFilterCallback = event => {
